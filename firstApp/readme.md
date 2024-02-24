@@ -33,18 +33,17 @@ Express Generator will make folder for us, also wrire basic code for us and our 
 ## Making session in express
 
 -create
-  req.session.anyName = anyValue
+  `req.session.anyName = anyValue`
 -read
-  req.session.anyName
+  `req.session.anyName`
 -delete
-  req.session.destroy()
+  `req.session.destroy()`
 
 ## Steps For Cookie
 
 - sending cookie // send by browser
-    res.cookie(name, value)
+    `res.cookie(name, value)`
 - reading cookie // read by server
-    req.cookies
-    req.cookies.name
+    `req.cookies.name`
 -deleting cookie // deleting on browser
-    res.clearCookie('name')
+    `res.clearCookie('name')`
