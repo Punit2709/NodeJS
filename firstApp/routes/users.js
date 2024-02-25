@@ -9,4 +9,4 @@ const userSchema = mongoose.Schema({
   phone: String,
 })
 
-module.exports = mongoose.model('users', userSchema);;
+module.exports = mongoose.model('users', userSchema);
