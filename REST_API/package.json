@@ -1,0 +1,15 @@
+{
+  "name": "rest_api",
+  "version": "1.0.0",
+  "description": "- It works on Server-Client architecture\r - It provides standards for communication btw Server and Client\r - If server sends an HTML file to client...then client like browser can use it but clien t like alexa, mobile can't use it.\r - So require such a raw format for response that can be useful for all type of client like :- JSON, XML\r - If client is surely Browser that is known then we can use HTML format, which reduce client side work\r - Always Respect HTTP methods... GET, POST, PUT, PATCH, DELETE\r - Don't use POST method to update or delete user.\r - for update use : patch method\r - for delete use : delete method",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.3",
+    "nodemon": "^3.1.0"
+  }
+}

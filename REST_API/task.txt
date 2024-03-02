@@ -1,0 +1,8 @@
+GET /users : list all users
+GET /users/u1 : list user with ID 1
+GET /users/u2 : list user with ID 2
+
+POST /users : add user
+PATCH / users/1 : Edit user with id 1
+DELETE / user/1 : delete user with id 1
+
