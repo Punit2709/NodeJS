@@ -7,14 +7,17 @@ const bcrypt = require("bcrypt")
 const File = require('./models/file');
 const app = express();
 
-mongoose.connect('mongodb://127.0.0.1/filesharing');
-
+app.use(express.urlencoded({ extended: true }))
 app.set("view engine", "ejs")
 
+mongoose.connect('mongodb://127.0.0.1/filesharing');
+
 const uploads = multer({ dest: "uploads" });
+
 app.get("/", (req, res) => {
     res.render("index")
 })
+
 app.post("/upload", uploads.single("file"), async (req, res) => {
     const fileData = {
         path: req.file.path,
@@ -26,18 +29,34 @@ app.post("/upload", uploads.single("file"), async (req, res) => {
     }
 
     const file = await File.create(fileData);
-    console.log(`${req.headers.origin}/uploads/${file.id}`);
     res.render("index", { fileLink: `${req.headers.origin}/file/${file.id}` })
 })
 
-app.get('/file/:id', async (req, res) => {
+async function handlePassword(req, res) {
     const file = await File.findById(req.params.id);
+    console.log(file.password)
+
+    if (file.password != null) {
+        if (req.body.password == null) {
+            res.render("password")
+            return 
+        }
+
+        if (!await bcrypt.compare(req.body.password, file.password)) {
+            res.render("password", { error: true })
+            return 
+        }
+    }
+
     file.downloadCount++;
     await file.save();
     console.log(file.downloadCount)
 
     res.download(file.path, file.originalName);
-})
+}
+
+app.get('/file/:id', handlePassword)
+app.post('/file/:id', handlePassword)
 
 app.listen(3000, console.log("Server Started at Port : 3000"))
 
