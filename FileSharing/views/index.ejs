@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../public/stylesheets/style.css" />
+    <style>
+      body {
+        width: 100vw;
+        height: 100vh;
+      }
+      form {
+        height: 100%;
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      form div {
+        margin: 3px;
+        padding: 3px;
+
+        display: flex;
+        justify-content: space-around;
+      }
+    </style>
+    <title>File Sharing</title>
+  </head>
+  <body>
+    <% if(locals.fileLink) { %>
+      <div>
+        Your file is uploaded:
+        <a href="<%= locals.fileLink %>"><%= locals.fileLink %></a>
+      </div>
+    <% } %>
+    
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <div>
+        <label for="file">File</label>
+        <input type="file" id="file" name="file" required />
+      </div>
+
+      <div>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" />
+      </div>
+
+      <div>
+        <button type="submit">Share</button>
+      </div>
+    </form>
+  </body>
+</html>
