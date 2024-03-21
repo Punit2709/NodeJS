@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Result</title>
+    <style>
+      html {
+        overflow: hidden;
+      }
+      body {
+        width: 100vw;
+        height: 100vh;
+
+        background-color: rgb(11, 11, 56);
+        color: aliceblue;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        width: 50vw;
+
+        border: 2px solid white;
+        margin: 1rem;
+        padding: 1rem;
+
+        border-radius: 1rem;
+      }
+      .form-ele {
+        width: 70%;
+        margin: 3px;
+      }
+
+      form button {
+        left: 1rem;
+      }
+
+      input {
+        width: 87.5%;
+      }
+    </style>
+  </head>
+  <body>
+    <form method="post">
+      <div class="form-ele">
+        <label for="roll">Roll No.</label>
+        <input type="text" name="roll"/>
+      </div>
+      <button class="form-ele" type="submit">submit</button>
+    </form>
+  </body>
+</html>

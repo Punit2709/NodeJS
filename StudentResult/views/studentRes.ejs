@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Result</title>
+    <style>
+      body {
+        width: 100vw;
+        height: 100vh;
+
+        background-color: rgb(114, 113, 111);
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        overflow: hidden;
+      }
+
+      header, footer {
+        font-size: 50px;
+        font-weight: 1000;
+        color: aqua;
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+      }
+
+      #student {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 75%;
+
+        margin: 2rem;
+        padding: 1rem;
+      }
+
+      #student td,
+      #student th {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+
+      #student tr:nth-child(odd) {
+        background-color: #584f4f;
+        color: #f2f2f2;
+      }
+      #student tr:nth-child(even) {
+        background-color: #f2f2f2;
+        color: #584f4f;
+      }
+
+      #student tr:hover {
+        background-color: #ddd;
+      }
+
+      #student th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #04aa6d;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main">
+        <header>Hello <%= data.name %>, here is Your Result</header>
+        <table id="student">
+          <tr>
+            <td>Mathematics</td>
+            <td><%= data.subjects.Mathematics %></td>
+          </tr>
+    
+          <tr>
+            <td>English</td>
+            <td><%= data.subjects.English %></td>
+          </tr>
+    
+          <tr>
+            <td>Science</td>
+            <td><%= data.subjects.Science %></td>
+          </tr>
+    
+          <tr>
+            <td>History</td>
+            <td><%= data.subjects.History %></td>
+          </tr>
+    
+          <tr>
+            <td>Geography</td>
+            <td><%= data.subjects.Geography %></td>
+          </tr>
+
+          <tr>
+            <td>Total Marks</td>
+            <td><%= data.total_marks %></td>
+          </tr>
+        </table>
+        
+        <% if((data.total_marks < 165 ) || (data.subjects.Mathematics < 33) || (data.subjects.English < 33) || (data.subjects.Science < 33) || (data.subjects.History < 33) || (data.subjects.Geography < 33)){%>
+          <footer>Oops You are fail :( </footer>
+        <%}else{%>
+          <footer>Congatulation You Are Pass :)</footer>
+        <% 
+        } %>
+        
+    </div>
+  </body>
+</html>
