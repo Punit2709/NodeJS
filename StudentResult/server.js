@@ -11,7 +11,7 @@ app.get('/result', (req, res) => {
     res.render("result");
 })
 
-app.post('/result', async (req, res) => {
+app.post('/result/:roll', async (req, res) => {
     const roll = Number(req.body.roll);
     if(roll < 61){
         const student = await Student.find({ 'roll': roll });
